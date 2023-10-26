@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text&display=swap');
+
+.header {
+    background-color: #232f3e;
+    display: flex;
+    height: 65px;
+    margin: 0;
+}
+
+.logo{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: 'Golos Text', sans-serif;
+}
+
+.logo * {
+    display: inline-block;
+}
+
+.logo h2 {
+    margin-left: 8px;
+    color: #99c455;
+    font-weight: 500;
+    font-size: 20px;
+    align-self: flex-end;
+    padding-bottom: 1px;
+}
+
+.logo img{
+    width: 50px;
+    height: 50px;
+    margin-right: 7px;
+}

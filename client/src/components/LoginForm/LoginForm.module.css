@@ -1,0 +1,61 @@
+.container {
+    background-color: rgb(249, 247, 247);
+    display: flex;
+}
+.box {
+    margin: auto;
+    width: 350px;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 45px;
+    border-radius: 8px;
+    background-color: white;
+    border: 1px solid rgb(235, 235, 235);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.box h1 {
+    font-size: 25px;
+    font-weight: 500;
+    font-family: 'Rubik',Arial, Helvetica, sans-serif !important;
+    margin-bottom: 10px;
+}
+
+.name {
+    display: block;
+    margin: auto !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+.password {
+    display: block;
+    margin: auto !important;
+}
+
+button {
+    margin-top: 25px !important;
+}
+
+.box hr{
+    width: 70%;
+    margin-top: 15px;
+    border: 0.5px solid rgb(218, 218, 218);
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.box span{
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Rubik',Arial, Helvetica, sans-serif !important;
+}
+
+.box span a {
+    text-decoration: none;
+    color:rgba(0, 31, 154, 0.872);
+}
+
+.box span a:hover {
+    text-decoration: underline;
+}
