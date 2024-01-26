@@ -1,0 +1,22 @@
+.addIconHolder {
+    margin-top: 10px !important;
+    /* margin: auto !important; */
+    text-align: center;
+}
+
+.addButton {
+    cursor: pointer;
+}
+
+.buttonsHolder{
+    /* margin: auto;
+    margin-top: 10px;
+    width: 170px; */
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.buttonsHolder button{
+    margin: 5px;
+}

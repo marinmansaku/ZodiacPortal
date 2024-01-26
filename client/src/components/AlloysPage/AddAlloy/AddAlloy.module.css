@@ -1,0 +1,114 @@
+.icon {
+    display: block !important;
+    margin: auto;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.popup{
+    background-color: rgba(0,0,0,0.5);
+    position:absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+
+}
+
+.dialogBox{
+    border-radius: 10px;
+    background-color: white;
+    width: 800px;
+    height: 630PX;
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: scroll;
+}
+
+
+.dialogBox h1{
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.materials {
+    margin-left: 20px;
+}
+
+.material p {
+    width: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 7px;
+}
+
+.numberBox {
+    width: 80px;
+    padding: 0px;
+}
+
+.sign {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+}
+
+.row {
+    display: inline-block;
+    margin-left: 50px;
+}
+
+.row:last-of-type{
+    margin-left: 100px;
+}
+
+.buttons {
+    text-align: right;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.buttons button:last-of-type {
+    margin-left: 10px;
+    margin-right: 80px;
+}
+
+.info div{
+    display: inline-block   ;
+    font-size: 12px;
+    margin-right: 20px;
+    margin-left: 30px;
+}
+
+.info div div {
+    display: inline-block;
+    margin: 0;
+}
+.info h2 {
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+    bottom: 5px;
+    
+}
+
+.info {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.notesContainer {
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.notes {
+    width: 100%;
+}

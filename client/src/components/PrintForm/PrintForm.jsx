@@ -26,23 +26,21 @@ function LoginForm () {
     const { setAuth } = useAuth();
     const navigate = useNavigate();
 
-    const [submited, setSubmited] = useState(false);
-
 
     const [width,height] = useWindowSize();
+
+    const [mode, setMode] = useState(0); // 0: Choose alloy & batch no.  || 1: Choose weight & print 
     
     const [error, setError] = useState({
         alloy: false,
         batchNumber: false,
-        grossWeight: false,
-        netWeight: false
+        grossWeight: false
     });
 
     const [userInputs, setUserInputs] = useState({
         alloy: '',
         batchNumber: '',
-        grossWeight: 0,
-        netWeight: 0
+        grossWeight: 0
     });
 
     const validateAlloy = () => {
@@ -55,6 +53,9 @@ function LoginForm () {
     const validateBatchNumber = () => {
         if(!userInputs.batchNumber){
             return false
+        }
+        if(parseInt(userInputs.batchNumber)<=0){
+            return false;
         }
         return true
     }
@@ -69,31 +70,15 @@ function LoginForm () {
         return true
     }
 
-    const validateNetWeight = () => {
-        if(!userInputs.netWeight){
-            return false
-        }
-        if(userInputs.netWeight <= 0){
-            return false
-        }
-        return true
-    }
-
 
     const validateInputs = () => {
         let valid = true;
         const updatedError = {
             alloy: !validateAlloy(),
             batchNumber: !validateBatchNumber(),
-            grossWeight: !validateGrossWeight(),
-            netWeight: !validateNetWeight()
+            grossWeight: !validateGrossWeight()
         };
-
         setError(updatedError);
-        if(valid){
-            return true;
-        }
-        return false;
     }
 
     const alloys = [
@@ -103,15 +88,24 @@ function LoginForm () {
         }
     ];
 
+    const startPrint = async (e) => {
+        validateInputs();
+        const valid = validateAlloy() && validateBatchNumber();
+        if(valid){
+            setMode(1);
+            setError(false,false,false);
+        }
+        // const response = await window.versions.ping(userInputs);
+        
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await window.versions.ping(userInputs);
-        console.log(response);
-        // window.print({silent: true})
-        // ipcMain.ping();
-        // const valid = validateInputs();
-        // if(!valid) return false;
-        
+        validateInputs();
+        const valid = validateGrossWeight();
+        if(valid){
+            const response = await window.versions.ping(userInputs);
+        }
     }
 
     return (
@@ -126,9 +120,26 @@ function LoginForm () {
                 className={styles.box}
                 onSubmit={handleSubmit}
             >
-                <h1>Printo një tabelë</h1>
+                <h1>
+                    {
+                        mode == 0 ?
+                            'Printo tabela'
+                        :
+                            'Printo një tabelë'
+                    }
+                </h1>
                 <FormControl className={styles.alloy}>
-                    <InputLabel size="small" className={styles.alloyLabel}>Marka</InputLabel>
+                    <InputLabel 
+                        size="small" 
+                        className={styles.alloyLabel} 
+                        error={error.alloy} 
+                        style={
+                            mode == 1 ?
+                            {'display': 'none'}
+                            :
+                            null
+                        }
+                    >Marka</InputLabel>
                     <Select 
                         id="outlined-select-alloy" 
                         label="Marka" 
@@ -147,6 +158,12 @@ function LoginForm () {
                             }
                         }
                         error={error.alloy}
+                        style={
+                            mode == 1 ?
+                            {'display': 'none'}
+                            :
+                            null
+                        }
                     >
                         {alloys.map((option) => (
                             <MenuItem key={option.value} value={option.value}>
@@ -173,7 +190,13 @@ function LoginForm () {
                             })
                         }
                     }
-                    error={error.password}
+                    error={error.batchNumber}
+                    style={
+                        mode == 1 ?
+                        {'display': 'none'}
+                        :
+                        null
+                    }
                 />
                 <TextField 
                     id="outlined-basic" 
@@ -195,31 +218,39 @@ function LoginForm () {
                         }
                     }
                     error={error.grossWeight}
-                />
-                <TextField
-                    id="outlined-password-input"
-                    label="Pesha neto"
-                    type="number"
-                    onWheel={(e) => e.target.blur()}
-                    required
-                    className={styles.password}
-                    fullWidth
-                    size="small"
-                    onChange={
-                        (e) => {
-                            setError(prev => {return {...prev,netWeight: false}})
-                            setUserInputs({
-                                ...userInputs, 
-                                netWeight: e.target.value
-                            })
-                        }
+                    style={
+                        mode == 1 ?
+                        null
+                        :
+                        {'display': 'none'}
                     }
-                    error={error.netWeight}
                 />
+                <Button
+                    // type="submit"
+                    onClick={(e) => startPrint()}
+                    variant="contained"
+                    sx={{width: '80%', height: '40px', textTransform: 'capitalize', fontSize: '16px', marginTop: '25px'}}
+                    style={
+                        mode == 1 ?
+                        {'display': 'none'}
+                        :
+                        null
+                    }
+                >
+                    Fillo
+                
+                </Button>
                 <Button
                     type="submit"
                     variant="contained"
-                    sx={{width: '80%', height: '40px', textTransform: 'capitalize', fontSize: '16px'}}
+                    color="success"
+                    sx={{width: '80%', height: '40px', textTransform: 'capitalize', fontSize: '16px', marginTop: '25px'}}
+                    style={
+                        mode == 1 ?
+                        null
+                        :
+                        {'display': 'none'}
+                    }
                 >
                     Printo
                 

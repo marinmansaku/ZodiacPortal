@@ -1,0 +1,14 @@
+.holder {
+    text-align: center;
+}
+
+.holder button {
+    /* display: block; */
+    font-size: 1vw;
+    width: 18vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-top: 25px;
+    /* margin: auto; */
+
+}

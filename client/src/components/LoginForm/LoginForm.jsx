@@ -139,7 +139,7 @@ function LoginForm () {
                 <Button
                     type="submit"
                     variant="contained"
-                    sx={{width: '80%', height: '40px', textTransform: 'capitalize', fontSize: '16px'}}
+                    sx={{width: '80%', height: '40px', textTransform: 'capitalize', fontSize: '16px', marginTop: '25px'}}
                 >
                     Hyr
                 

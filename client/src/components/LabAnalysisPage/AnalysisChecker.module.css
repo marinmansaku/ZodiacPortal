@@ -1,0 +1,19 @@
+.holder {
+    width: min-content;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.controller {
+    margin: auto;
+    margin-top: 20px;
+    width: 300px;
+}
+
+.button {
+    float: right;
+}
+
+.select{
+    float: left;
+}
